@@ -1,10 +1,7 @@
 package com.auto_store.auto_store.model;
 
 import com.auto_store.auto_store.enums.ERole;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;

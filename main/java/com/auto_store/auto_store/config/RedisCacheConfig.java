@@ -53,5 +53,4 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(redisSerializer())).entryTtl(Duration.ofHours(expirationCacheHour));
         return new RedisCacheManager(redisCacheWriter, redisCacheConfiguration);
     }
-
 }

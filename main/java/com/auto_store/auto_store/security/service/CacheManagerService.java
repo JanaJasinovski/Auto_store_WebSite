@@ -40,5 +40,4 @@ public class CacheManagerService<E> {
     public void deleteFromCache(String key) {
         redisService.del(key);
     }
-
 }

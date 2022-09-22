@@ -16,8 +16,8 @@ public class SpringFoxConfig {
                         .version("1.0.0")
                         .contact(
                                 new Contact()
-                                        .email("jana@gmail.com")
-                                        .name("Jana Nagornyh")
+                                        .email("jantschick3@gmail.com")
+                                        .name("Jana Jasinovski")
                         )
                 );
     }

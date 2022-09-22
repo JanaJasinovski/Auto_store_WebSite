@@ -13,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 public class JwtResponse {
 
+    private String accessToken;
     private String token;
     private String refreshToken;
 
@@ -35,6 +36,11 @@ public class JwtResponse {
         this.email = email;
         this.roles = roles;
         this.expiresAt = Long.parseLong(String.valueOf(expiryDate));
+        this.refreshToken = refreshToken;
+    }
+
+    public JwtResponse(String accessToken, String refreshToken) {
+        this.accessToken = accessToken;
         this.refreshToken = refreshToken;
     }
 

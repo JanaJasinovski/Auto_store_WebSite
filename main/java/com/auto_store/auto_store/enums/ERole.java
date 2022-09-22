@@ -14,5 +14,4 @@ public enum ERole implements GrantedAuthority {
     public String getAuthority() {
         return vale;
     }
-
-    }
+}

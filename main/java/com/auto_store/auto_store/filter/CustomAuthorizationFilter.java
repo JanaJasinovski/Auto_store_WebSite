@@ -26,11 +26,6 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
-/**
- * @author Get Arrays (https://www.getarrays.io/)
- * @version 1.0
- * @since 7/10/2021
- */
 @Slf4j
 public class CustomAuthorizationFilter extends OncePerRequestFilter {
     @Override
