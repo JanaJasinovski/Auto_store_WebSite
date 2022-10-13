@@ -6,14 +6,16 @@ import com.auto_store.auto_store.exception.TokenRefreshException;
 import com.auto_store.auto_store.model.RefreshToken;
 import com.auto_store.auto_store.model.Role;
 import com.auto_store.auto_store.model.User;
-import com.auto_store.auto_store.payload.JwtResponse;
-import com.auto_store.auto_store.payload.RefreshTokenRequest;
-import com.auto_store.auto_store.payload.TokenRefreshResponse;
+import com.auto_store.auto_store.payload.request.RefreshJwtRequest;
+import com.auto_store.auto_store.payload.response.JwtResponse;
+import com.auto_store.auto_store.payload.request.RefreshTokenRequest;
+import com.auto_store.auto_store.payload.response.TokenRefreshResponse;
 import com.auto_store.auto_store.repository.UserRepository;
 import com.auto_store.auto_store.security.CustomUserDetails;
 import com.auto_store.auto_store.security.jwt.JwtUtils;
 import com.auto_store.auto_store.security.service.RefreshTokenService;
 import com.auto_store.auto_store.security.service.UserService;
+import com.auto_store.auto_store.service.AuthService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -46,6 +48,7 @@ public class AuthController {
     private final JwtUtils jwtUtils;
     private final ObjectMapper objectMapper;
     private final RefreshTokenService refreshTokenService;
+    private final AuthService authService;
 
     @Operation(
             summary = "Registration in the system"
@@ -103,6 +106,13 @@ public class AuthController {
         }
 
     }
+
+    @PostMapping("token")
+    public ResponseEntity<JwtResponse> getNewAccessToken(@RequestBody RefreshJwtRequest request) {
+        final JwtResponse token = authService.getAccessToken(request.getRefreshToken());
+        return ResponseEntity.ok(token);
+    }
+
 
     @Operation(
             summary = "Get new access token by refresh token"

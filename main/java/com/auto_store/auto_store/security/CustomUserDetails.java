@@ -9,16 +9,19 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serial;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomUserDetails implements UserDetails {
 
+    @Serial
     private static final long serialVersionUID = 1L;
     private Integer id;
     private String email;
@@ -30,7 +33,7 @@ public class CustomUserDetails implements UserDetails {
 
     public static CustomUserDetails build(User user) {
 
-        List<GrantedAuthority> authorities = Collections.singleton(user.getRole()).stream()
+        List<GrantedAuthority> authorities = Stream.of(user.getRole())
                 .map(role -> new SimpleGrantedAuthority(role.getName().name()))
                 .collect(Collectors.toList());
         return new CustomUserDetails(

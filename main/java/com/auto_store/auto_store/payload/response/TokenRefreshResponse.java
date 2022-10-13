@@ -1,5 +1,4 @@
-package com.auto_store.auto_store.payload;
-
+package com.auto_store.auto_store.payload.response;
 import lombok.Data;
 
 @Data

@@ -1,4 +1,4 @@
-package com.auto_store.auto_store.payload;
+package com.auto_store.auto_store.payload.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

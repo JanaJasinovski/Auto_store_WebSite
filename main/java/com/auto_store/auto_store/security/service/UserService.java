@@ -7,6 +7,7 @@ import com.auto_store.auto_store.security.CustomUserDetails;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,13 +21,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class UserService implements UserDetailsService {
 
-    private final UserRepository userRepo;
+    private final UserRepository userRepository;
     private final PasswordEncoder encoder;
 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        var user = userRepo.findByEmail(email);
+        var user = userRepository.findByEmail(email);
 
         if (user == null) {
             throw new UsernameNotFoundException("User not found with email: " + email);
@@ -42,7 +43,7 @@ public class UserService implements UserDetailsService {
         }
 
         log.info("save user {} to db", user.getEmail());
-        userRepo.save(user);
+        userRepository.save(user);
     }
 
     public boolean logout(String email) {
@@ -52,8 +53,12 @@ public class UserService implements UserDetailsService {
     @Cacheable(value = "Users", key = "#id")
     public User getById(Integer id) {
 
-        return userRepo.findById(id).orElseThrow(() ->
+        return userRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("User", "id", id)
         );
+    }
+
+    public User getByEmail(String email){
+        return userRepository.findByEmail(email);
     }
 }

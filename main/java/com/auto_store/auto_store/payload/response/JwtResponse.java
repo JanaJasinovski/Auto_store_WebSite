@@ -1,4 +1,4 @@
-package com.auto_store.auto_store.payload;
+package com.auto_store.auto_store.payload.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +23,7 @@ public class JwtResponse {
     @Value("${app.jwtExpirationMs}")
     private Long expiresAt;
 
-    public JwtResponse(String token,String refreshToken, String email, List<String> roles, Long expiresAt) {
+    public JwtResponse(String token, String refreshToken, String email, List<String> roles, Long expiresAt) {
         this.token = token;
         this.email = email;
         this.roles = roles;
@@ -31,7 +31,7 @@ public class JwtResponse {
         this.refreshToken = refreshToken;
     }
 
-    public JwtResponse(String token,String refreshToken, String email, List<String> roles, Instant expiryDate) {
+    public JwtResponse(String token, String refreshToken, String email, List<String> roles, Instant expiryDate) {
         this.token = token;
         this.email = email;
         this.roles = roles;
