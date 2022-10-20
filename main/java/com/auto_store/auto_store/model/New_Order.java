@@ -1,14 +1,11 @@
 package com.auto_store.auto_store.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
@@ -18,7 +15,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Table(name = "new_order")
-public class Order extends BaseEntity {
+public class New_Order extends BaseEntity {
     @Column(name = "order_date")
     private Date orderDate;
 
@@ -31,13 +28,10 @@ public class Order extends BaseEntity {
     @Column(name = "order_total")
     private Double orderTotal;
 
-    @Column(name = "status")
-    private int status;
-
-    @OneToMany(mappedBy="order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy="new_order", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Car> cars;
 
-    @OneToMany(mappedBy="order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy="new_order", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Shipping> shippings;
 
     @OneToOne(cascade = CascadeType.ALL)

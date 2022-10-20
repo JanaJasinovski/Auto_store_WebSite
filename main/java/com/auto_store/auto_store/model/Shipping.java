@@ -19,8 +19,8 @@ public class Shipping extends BaseEntity{
     private String receiver;
 
     @ManyToOne
-    @JoinColumn(name="order_id")
-    private Order order;
+    @JoinColumn(name="new_order_id")
+    private New_Order new_order;
 
     @ManyToOne
     @JoinColumn(name="address_id")

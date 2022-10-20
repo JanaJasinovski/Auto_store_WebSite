@@ -1,14 +1,13 @@
 package com.auto_store.auto_store.model;
 
 import lombok.*;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.Collection;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -24,9 +23,6 @@ public class User extends BaseEntity{
 
     @Column(name = "last_name", length = 15)
     private String lastName;
-
-    @Column(name = "avatar", columnDefinition = "LONGBLOB")
-    private byte[] avatar;
 
     @NotBlank
     @Size(max = 50)
@@ -52,5 +48,11 @@ public class User extends BaseEntity{
         this.email = email;
         this.password = password;
         this.addresses = addresses;
+    }
+
+    public User(String firstName, String email, String password) {
+        this.firstName= firstName;
+        this.email= email;
+        this.password = password;
     }
 }

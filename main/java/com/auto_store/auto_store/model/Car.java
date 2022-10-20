@@ -1,12 +1,13 @@
 package com.auto_store.auto_store.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @AllArgsConstructor
@@ -24,12 +25,19 @@ public class Car extends BaseEntity {
     @Column(name = "image", columnDefinition = "LONGBLOB")
     private byte[] image;
 
-    public int count;
+    public Long count;
 
     @ManyToOne
     @JoinColumn(name="model_id")
     private Model model;
 
     @ManyToOne
-    private Order order;
+    @JoinColumn(name="new_order_id")
+    private New_Order new_order;
+
+    private boolean active=true;
+
+    public boolean isActive() {
+        return active;
+    }
 }

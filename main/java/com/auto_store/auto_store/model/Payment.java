@@ -1,6 +1,5 @@
 package com.auto_store.auto_store.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,5 +36,5 @@ public class Payment extends BaseEntity{
     private String holderName;
 
     @OneToOne(mappedBy = "payment")
-    private Order order;
+    private New_Order new_order;
 }
