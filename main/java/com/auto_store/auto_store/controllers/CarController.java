@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -21,5 +22,10 @@ public class CarController {
     @GetMapping("/cars")
     public ResponseEntity<List<?>> getListCars() {
         return new ResponseEntity<>(carService.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/cars/{id}")
+    public ResponseEntity<?> getProductById(@PathVariable Integer id) {
+        return new ResponseEntity<>(carService.getById(id), HttpStatus.OK);
     }
 }

@@ -14,14 +14,17 @@ public class CarDTO {
     private String name;
     private Double price;
     private byte[] image;
+    private Long count;
+    private boolean active;
+
     private String model_Type;
     private String model_Generation;
     private String model_Country;
+
     private Date new_order_orderDate;
     private Date new_order_shipping_date;
     private String new_order_status;
     private Double new_order_total;
-    private Long count;
 
     @Override
     public String toString() {

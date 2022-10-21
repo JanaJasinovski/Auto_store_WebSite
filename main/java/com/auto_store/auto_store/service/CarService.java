@@ -22,4 +22,8 @@ public class CarService {
         return carRepository.findAll().stream().map(dtoConvert::convertCar).collect(Collectors.toList());
     }
 
+    public CarDTO getById(Integer id) {
+        return dtoConvert.convertCar(carRepository.findById(id).get());
+    }
+
 }

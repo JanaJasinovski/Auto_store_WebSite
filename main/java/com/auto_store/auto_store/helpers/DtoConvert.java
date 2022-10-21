@@ -27,13 +27,14 @@ public class DtoConvert {
         carDTO.setNew_order_status(new_order.getOrderStatus());
         carDTO.setNew_order_total(new_order.getOrderTotal());
 
-
         return carDTO;
     }
 
     public CarDTO convertCar(Car car) {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
         CarDTO carDTO = modelMapper.map(car, CarDTO.class);
+
         carDTO.setModel_Type(carDTO.getModel_Type());
         carDTO.setModel_Generation(carDTO.getModel_Generation());
         carDTO.setModel_Country(carDTO.getModel_Country());

@@ -7,12 +7,12 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Table(name = "payment")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@Table(name = "payment")
 public class Payment extends BaseEntity{
     @Column(name = "type")
     private String type;
