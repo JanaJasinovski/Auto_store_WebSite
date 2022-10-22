@@ -1,12 +1,18 @@
 package com.auto_store.auto_store.dto;
 
+import com.auto_store.auto_store.model.Model;
+import com.auto_store.auto_store.model.NewOrder;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
+import lombok.*;
 
-import java.util.Arrays;
-import java.util.Date;
+import java.util.Set;
 
-@Data
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CarDTO {
 
@@ -16,31 +22,7 @@ public class CarDTO {
     private byte[] image;
     private Long count;
     private boolean active;
+    private Set<Model> models;
+    private Set<NewOrder> newOrders;
 
-    private String model_Type;
-    private String model_Generation;
-    private String model_Country;
-
-    private Date new_order_orderDate;
-    private Date new_order_shipping_date;
-    private String new_order_status;
-    private Double new_order_total;
-
-    @Override
-    public String toString() {
-        return "CarDTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", image=" + Arrays.toString(image) +
-                ", model_Type='" + model_Type + '\'' +
-                ", model_Generation='" + model_Generation + '\'' +
-                ", model_Country='" + model_Country + '\'' +
-                ", new_order_orderDate=" + new_order_orderDate +
-                ", new_order_shipping_date=" + new_order_shipping_date +
-                ", new_order_status='" + new_order_status + '\'' +
-                ", new_order_total=" + new_order_total +
-                ", count=" + count +
-                '}';
-    }
 }

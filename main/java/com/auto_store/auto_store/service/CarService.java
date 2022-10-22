@@ -2,6 +2,7 @@ package com.auto_store.auto_store.service;
 
 import com.auto_store.auto_store.dto.CarDTO;
 import com.auto_store.auto_store.helpers.DtoConvert;
+import com.auto_store.auto_store.model.Car;
 import com.auto_store.auto_store.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +20,11 @@ public class CarService {
     private final DtoConvert dtoConvert;
 
     public List<CarDTO> findAll() {
+        for (Car q: carRepository.findAll()) {
+            System.out.println("---------------------------------");
+            System.out.println(q);
+            System.out.println("---------------------------------");
+        }
         return carRepository.findAll().stream().map(dtoConvert::convertCar).collect(Collectors.toList());
     }
 

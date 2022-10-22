@@ -1,19 +1,15 @@
 package com.auto_store.auto_store.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.web.multipart.MultipartFile;
+import lombok.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 @Table(name = "car")
 public class Car extends BaseEntity {
     @Column(name = "name")
@@ -28,14 +24,14 @@ public class Car extends BaseEntity {
     public Long count;
 
     @ManyToOne
-    @JoinColumn(name="model_id")
+    @JoinColumn(name = "model_id")
     private Model model;
 
     @ManyToOne
-    @JoinColumn(name="new_order_id")
-    private New_Order new_order;
+    @JoinColumn(name = "new_order_id")
+    private NewOrder new_order;
 
-    private boolean active=true;
+    private boolean active = true;
 
     public boolean isActive() {
         return active;

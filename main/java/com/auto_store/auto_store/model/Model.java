@@ -1,9 +1,6 @@
 package com.auto_store.auto_store.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -29,9 +26,20 @@ public class Model extends BaseEntity {
     @JoinColumn(name = "mark_id")
     private Mark mark;
 
-    @OneToMany(mappedBy = "model", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "model", cascade = CascadeType.ALL)
     private Set<Engine> engines;
 
-    @OneToMany(mappedBy = "model", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "model", cascade = CascadeType.ALL)
     private Set<Car> cars;
+
+    @Override
+    public String toString() {
+        return "Model{" +
+                "type='" + type + '\'' +
+                ", generation='" + generation + '\'' +
+                ", country='" + country + '\'' +
+                ", mark=" + mark +
+                ", engines=" + engines +
+                '}';
+    }
 }

@@ -1,9 +1,6 @@
 package com.auto_store.auto_store.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,7 +12,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Table(name = "new_order")
-public class New_Order extends BaseEntity {
+public class NewOrder extends BaseEntity {
     @Column(name = "order_date")
     private Date orderDate;
 
@@ -28,13 +25,25 @@ public class New_Order extends BaseEntity {
     @Column(name = "order_total")
     private Double orderTotal;
 
-    @OneToMany(mappedBy="new_order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy="new_order", cascade = CascadeType.ALL)
     private Set<Car> cars;
 
-    @OneToMany(mappedBy="new_order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy="new_order", cascade = CascadeType.ALL)
     private Set<Shipping> shippings;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "payment_id", referencedColumnName = "id")
     private Payment payment;
+
+    @Override
+    public String toString() {
+        return "NewOrder{" +
+                "orderDate=" + orderDate +
+                ", shippingDate=" + shippingDate +
+                ", orderStatus='" + orderStatus + '\'' +
+                ", orderTotal=" + orderTotal +
+                ", shippings=" + shippings +
+                ", payment=" + payment +
+                '}';
+    }
 }

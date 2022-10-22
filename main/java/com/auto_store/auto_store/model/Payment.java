@@ -36,5 +36,5 @@ public class Payment extends BaseEntity{
     private String holderName;
 
     @OneToOne(mappedBy = "payment")
-    private New_Order new_order;
+    private NewOrder new_order;
 }

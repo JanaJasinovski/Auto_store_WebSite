@@ -20,7 +20,7 @@ public class Shipping extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name="new_order_id")
-    private New_Order new_order;
+    private NewOrder new_order;
 
     @ManyToOne
     @JoinColumn(name="address_id")

@@ -3,11 +3,13 @@ package com.auto_store.auto_store.helpers;
 import com.auto_store.auto_store.dto.CarDTO;
 import com.auto_store.auto_store.model.Car;
 import com.auto_store.auto_store.model.Model;
-import com.auto_store.auto_store.model.New_Order;
+import com.auto_store.auto_store.model.NewOrder;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Component;
+
+import java.util.Collections;
 
 @Component
 @RequiredArgsConstructor
@@ -15,17 +17,11 @@ public class DtoConvert {
 
     private final ModelMapper modelMapper;
 
-    public CarDTO convertCar(Car car, Model model, New_Order new_order) {
+    public CarDTO convertCar(Car car, Model model, NewOrder new_order) {
 
         CarDTO carDTO = modelMapper.map(car, CarDTO.class);
-        carDTO.setModel_Type(model.getType());
-        carDTO.setModel_Generation(model.getGeneration());
-        carDTO.setModel_Country(model.getCountry());
-
-        carDTO.setNew_order_orderDate(new_order.getOrderDate());
-        carDTO.setNew_order_shipping_date(new_order.getShippingDate());
-        carDTO.setNew_order_status(new_order.getOrderStatus());
-        carDTO.setNew_order_total(new_order.getOrderTotal());
+        carDTO.setModels(Collections.singleton(model));
+        carDTO.setNewOrders(Collections.singleton(new_order));
 
         return carDTO;
     }
@@ -35,15 +31,10 @@ public class DtoConvert {
 
         CarDTO carDTO = modelMapper.map(car, CarDTO.class);
 
-        carDTO.setModel_Type(carDTO.getModel_Type());
-        carDTO.setModel_Generation(carDTO.getModel_Generation());
-        carDTO.setModel_Country(carDTO.getModel_Country());
+        carDTO.setModels(carDTO.getModels());
+        carDTO.setNewOrders(carDTO.getNewOrders());
 
-        carDTO.setNew_order_orderDate(carDTO.getNew_order_orderDate());
-        carDTO.setNew_order_shipping_date(carDTO.getNew_order_shipping_date());
-        carDTO.setNew_order_status(carDTO.getNew_order_status());
-        carDTO.setNew_order_total(carDTO.getNew_order_total());
-
+        System.out.println(carDTO);
         return carDTO;
     }
 }
