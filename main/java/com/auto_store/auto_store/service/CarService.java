@@ -20,11 +20,6 @@ public class CarService {
     private final DtoConvert dtoConvert;
 
     public List<CarDTO> findAll() {
-        for (Car q: carRepository.findAll()) {
-            System.out.println("---------------------------------");
-            System.out.println(q);
-            System.out.println("---------------------------------");
-        }
         return carRepository.findAll().stream().map(dtoConvert::convertCar).collect(Collectors.toList());
     }
 
