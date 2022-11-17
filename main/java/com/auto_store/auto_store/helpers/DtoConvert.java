@@ -1,7 +1,9 @@
 package com.auto_store.auto_store.helpers;
 
 import com.auto_store.auto_store.dto.CarDTO;
+import com.auto_store.auto_store.dto.MarkDTO;
 import com.auto_store.auto_store.model.Car;
+import com.auto_store.auto_store.model.Mark;
 import com.auto_store.auto_store.model.Model;
 import com.auto_store.auto_store.model.NewOrder;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +36,14 @@ public class DtoConvert {
         carDTO.setModels(carDTO.getModels());
         carDTO.setNewOrders(carDTO.getNewOrders());
 
-        System.out.println(carDTO);
         return carDTO;
+    }
+
+    public MarkDTO convertMark(Mark mark) {
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
+        MarkDTO markDTO = modelMapper.map(mark, MarkDTO.class);
+
+        return markDTO;
     }
 }
