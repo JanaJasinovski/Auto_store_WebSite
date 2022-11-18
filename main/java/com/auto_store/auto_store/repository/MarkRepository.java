@@ -8,6 +8,5 @@ import java.util.List;
 
 @Repository
 public interface MarkRepository extends JpaRepository<Mark, Integer> {
-
     List<Mark> findAll();
 }

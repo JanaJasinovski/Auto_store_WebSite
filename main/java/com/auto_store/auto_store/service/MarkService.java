@@ -1,9 +1,7 @@
 package com.auto_store.auto_store.service;
 
-import com.auto_store.auto_store.dto.CarDTO;
 import com.auto_store.auto_store.dto.MarkDTO;
 import com.auto_store.auto_store.helpers.DtoConvert;
-import com.auto_store.auto_store.model.Mark;
 import com.auto_store.auto_store.repository.MarkRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

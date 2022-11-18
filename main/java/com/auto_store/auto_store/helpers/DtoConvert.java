@@ -42,8 +42,6 @@ public class DtoConvert {
     public MarkDTO convertMark(Mark mark) {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
-        MarkDTO markDTO = modelMapper.map(mark, MarkDTO.class);
-
-        return markDTO;
+        return modelMapper.map(mark, MarkDTO.class);
     }
 }

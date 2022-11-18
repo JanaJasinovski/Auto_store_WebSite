@@ -18,7 +18,7 @@ public class MarkController {
     private final MarkService markService;
 
     @GetMapping("/marks")
-    public ResponseEntity<List<?>> getListCars() {
+    public ResponseEntity<List<?>> getListMarks() {
         return new ResponseEntity<>(markService.findAll(), HttpStatus.OK);
     }
 }
